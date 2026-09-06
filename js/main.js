@@ -128,12 +128,13 @@ function paintQuote(play) {
   const el = $("#quote");
   if (!el) return;
   const text = copy[lang.value].interlude;
+  const wasOn = play && el.classList.contains("is-on");
   el.classList.remove("is-on");
   let delay = 0;
   el.innerHTML = text.split(/(\s+)/).map((part) => {
     if (/^\s+$/.test(part)) return part;
     const html = `<span class="qw" style="--d:${delay}s">${part}</span>`;
-    delay += 0.16;
+    delay += 0.18;
     return html;
   }).join("");
   if (!play) return;
@@ -149,7 +150,7 @@ const io = new IntersectionObserver((entries) => {
     else entry.target.classList.add("is-on");
     io.unobserve(entry.target);
   }
-}, { threshold: 0.2, rootMargin: "0px 0px -12% 0px" });
+}, { threshold: 0.4 });
 
 $$(".reveal").forEach((el) => io.observe(el));
 paintQuote(false);
@@ -158,20 +159,57 @@ io.observe($("#quote"));
 $("#lang-uk").addEventListener("click", () => { lang.value = "uk"; applyLang(); });
 $("#lang-ru").addEventListener("click", () => { lang.value = "ru"; applyLang(); });
 
-/* Floating notes */
+/* Floating notes + parallax */
 const glyphs = ["♪", "♫", "♩", "♬", "𝄞"];
 const layer = $("#notes");
-for (let i = 0; i < 14; i += 1) {
+const noteParallax = [];
+for (let i = 0; i < 16; i += 1) {
+  const wrap = document.createElement("span");
+  wrap.className = "note-p";
+  wrap.style.setProperty("--x", `${4 + (i * 6.2) % 92}%`);
   const el = document.createElement("span");
   el.className = "note";
   el.textContent = glyphs[i % glyphs.length];
-  el.style.left = `${6 + (i * 7) % 90}%`;
-  el.style.fontSize = `${2.2 + (i % 5) * 1.1}rem`;
-  el.style.setProperty("--dur", `${16 + (i % 7) * 3}s`);
-  el.style.setProperty("--delay", `${-i * 1.4}s`);
-  el.style.setProperty("--dx", `${(i % 2 === 0 ? 1 : -1) * (20 + i * 4)}px`);
-  layer.appendChild(el);
+  el.style.setProperty("--size", `${2.4 + (i % 6) * 1.15}rem`);
+  el.style.setProperty("--dur", `${18 + (i % 8) * 3}s`);
+  el.style.setProperty("--delay", `${-i * 1.6}s`);
+  el.style.setProperty("--dx", `${(i % 2 === 0 ? 1 : -1) * (28 + i * 6)}px`);
+  wrap.appendChild(el);
+  layer.appendChild(wrap);
+  noteParallax.push({ el: wrap, speed: 0.12 + (i % 5) * 0.1 });
 }
+
+const interlude = document.querySelector(".interlude");
+const interludeImg = interlude?.querySelector("img");
+const quoteEl = $("#quote");
+const heroPhoto = document.querySelector(".photo img");
+let parallaxTick = false;
+function applyParallax() {
+  parallaxTick = false;
+  const y = window.scrollY || 0;
+  noteParallax.forEach(({ el, speed }) => {
+    el.style.transform = `translate3d(0, ${y * speed}px, 0)`;
+  });
+  if (interlude && interludeImg) {
+    const r = interlude.getBoundingClientRect();
+    const p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+    const shift = (p - 0.5) * 90;
+    interludeImg.style.transform = `translate3d(0, ${shift}px, 0) scale(1.12)`;
+    if (quoteEl) quoteEl.style.transform = `translate3d(0, ${-shift * 0.28}px, 0)`;
+  }
+  if (heroPhoto) {
+    const r = heroPhoto.getBoundingClientRect();
+    const p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+    heroPhoto.style.transform = `translate3d(0, ${(p - 0.5) * 24}px, 0)`;
+  }
+}
+function onScroll() {
+  if (parallaxTick) return;
+  parallaxTick = true;
+  requestAnimationFrame(applyParallax);
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+applyParallax();
 
 /* Music */
 const track = $("#ambient");
