@@ -137,16 +137,15 @@ h2 { font-family: var(--display); font-weight: 700; letter-spacing: -0.035em; li
 .quote .qw {
   display: inline-block;
   opacity: 0;
-  filter: blur(16px);
-  transform: translate3d(0, 1.4em, 0);
+  transform: translate3d(0, 1.1em, 0);
 }
 .quote.is-on .qw {
-  animation: wordIn 1.45s var(--ease) both;
+  animation: wordIn 1.2s var(--ease) both;
   animation-delay: var(--d, 0s);
 }
 @keyframes wordIn {
-  from { opacity: 0; filter: blur(16px); transform: translate3d(0, 1.4em, 0); }
-  to { opacity: 1; filter: blur(0); transform: none; }
+  from { opacity: 0; transform: translate3d(0, 1.1em, 0); }
+  to { opacity: 1; transform: none; }
 }
 
 .socials { display: grid; gap: 0.85rem; margin-top: 1.75rem; }
@@ -166,15 +165,13 @@ h2 { font-family: var(--display); font-weight: 700; letter-spacing: -0.035em; li
 
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  filter: blur(8px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
+  transform: translateY(18px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
   transition-delay: var(--d, 0s);
 }
 .reveal.is-on {
   opacity: 1;
   transform: none;
-  filter: none;
 }
 .clef-spin { position: absolute; right: -1rem; top: 4rem; width: 9rem; opacity: 0.06; pointer-events: none; }
 
