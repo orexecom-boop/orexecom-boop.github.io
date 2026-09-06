@@ -101,18 +101,6 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => [...document.querySelectorAll(sel)];
 const lang = { value: localStorage.getItem("ob-lang") === "ru" ? "ru" : "uk" };
 
-function syncHeader() {
-  const header = $(".header");
-  if (!header) return;
-  const h = Math.ceil(header.getBoundingClientRect().height);
-  document.documentElement.style.setProperty("--header-h", `${h}px`);
-}
-window.addEventListener("resize", syncHeader);
-window.addEventListener("orientationchange", syncHeader);
-if (window.visualViewport) {
-  window.visualViewport.addEventListener("resize", syncHeader);
-}
-
 function applyLang() {
   const t = copy[lang.value];
   document.documentElement.lang = lang.value === "ru" ? "ru" : "uk";
@@ -366,7 +354,3 @@ piano.addEventListener("pointerup", release);
 piano.addEventListener("pointercancel", release);
 
 applyLang();
-syncHeader();
-if (window.ResizeObserver && $(".header")) {
-  new ResizeObserver(syncHeader).observe($(".header"));
-}
