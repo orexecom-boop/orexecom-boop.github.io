@@ -366,3 +366,7 @@ piano.addEventListener("pointerup", release);
 piano.addEventListener("pointercancel", release);
 
 applyLang();
+syncHeader();
+if (window.ResizeObserver && $(".header")) {
+  new ResizeObserver(syncHeader).observe($(".header"));
+}
