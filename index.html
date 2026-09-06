@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Odesskaya Banda — вокал, фортепіано, сольфеджіо в Одесі</title>
+    <meta
+      name="description"
+      content="Юліанна Олегівна — уроки вокалу, фортепіано та сольфеджіо онлайн і в студії на Таїрова, Одеса."
+    />
+    <meta property="og:title" content="Odesskaya Banda" />
+    <meta
+      property="og:description"
+      content="Вокал • Фортепіано • Сольфеджіо. Уроки онлайн та в студії на Таїрова (Одеса)."
+    />
+    <meta property="og:image" content="images/yuliana-sea.jpg" />
+    <meta name="theme-color" content="#111114" />
+    <link rel="icon" href="images/logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="notes" id="notes" aria-hidden="true"></div>
+    <audio id="ambient" src="audio/ambient.mp3" loop preload="auto" playsinline hidden></audio>
+
+    <header class="header">
+      <div class="wrap header-top">
+        <a class="brand" href="#top">
+          <img src="images/logo.jpg" alt="" width="44" height="44" />
+          <span data-i="brand">Odesskaya Banda</span>
+        </a>
+        <nav class="nav">
+          <a href="#about" data-i="nav.about">Про викладача</a>
+          <a href="#services" data-i="nav.services">Послуги</a>
+          <a href="#prices" data-i="nav.prices">Ціни</a>
+          <a href="#book" data-i="nav.book">Запис</a>
+        </nav>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" id="lang-uk" class="is-on" aria-label="Українська">UKR</button>
+          <button type="button" id="lang-ru" aria-label="Русский">RU</button>
+        </div>
+      </div>
+      <div class="piano-bar">
+        <div class="piano" id="piano" role="application" aria-label="Piano">
+          <div class="piano-whites" id="piano-whites"></div>
+          <div class="piano-blacks" id="piano-blacks"></div>
+        </div>
+      </div>
+      <nav class="nav-mobile">
+        <a href="#about" data-i="nav.about">Про викладача</a>
+        <a href="#services" data-i="nav.services">Послуги</a>
+        <a href="#prices" data-i="nav.prices">Ціни</a>
+        <a href="#book" data-i="nav.book">Запис</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="kicker" data-i="hero.kicker">Одеса · Таїрова</p>
+            <h1 class="reveal" data-i="hero.title">Вокал • Фортепіано • Сольфеджіо</h1>
+            <p class="lead reveal" data-i="hero.subtitle" style="--d: .12s">
+              Уроки музики онлайн та в студії на Таїрова (Одеса)
+            </p>
+            <div class="row">
+              <a class="btn" href="#book" data-i="hero.cta">Записатися на урок</a>
+              <span class="hint" data-i="hero.first">Перший урок — 450 грн</span>
+            </div>
+            <div class="row">
+              <div class="waves" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <p class="hint" data-i="pianoHint">Натисніть клавіші — почуєте живе фортепіано</p>
+            </div>
+          </div>
+          <div class="photo">
+            <img src="images/yuliana-sea.jpg" alt="Юліанна Олегівна" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section mist" id="about">
+        <div class="wrap about-grid">
+          <div class="text">
+            <p class="kicker" data-i="about.eyebrow">Про викладача</p>
+            <h2 class="reveal" data-i="about.name">Юліанна Олегівна</h2>
+            <p class="role" data-i="about.role">Вокал · фортепіано · сольфеджіо</p>
+            <p class="copy" data-i="about.p1">
+              Професійний викладач вокалу, фортепіано та сольфеджіо. Легкі уроки з гумором. Результат видно вже після перших занять.
+            </p>
+            <p class="copy" data-i="about.p2">
+              Без зайвої напруги і з увагою до кожного: голос стає впевненішим, руки — вільнішими, а музика — зрозумілішою.
+            </p>
+          </div>
+          <div class="media">
+            <img class="frame" src="images/studio.jpg" alt="Студія на Таїрова, Одеса" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="wrap">
+          <p class="kicker" data-i="services.eyebrow">Послуги</p>
+          <h2 class="reveal" data-i="services.title">Три дисципліни. Один шлях.</h2>
+          <div class="cards">
+            <article class="card">
+              <p class="num">01</p>
+              <h3 data-i="services.vocal">Вокал</h3>
+              <p data-i="services.vocalText">Дихання, опора, діапазон і репертуар. Від перших нот до впевненого виступу.</p>
+            </article>
+            <article class="card">
+              <p class="num">02</p>
+              <h3 data-i="services.piano">Фортепіано</h3>
+              <p data-i="services.pianoText">Техніка, слух і улюблені твори. З нуля або з досвідом — у своєму темпі.</p>
+            </article>
+            <article class="card">
+              <p class="num">03</p>
+              <h3 data-i="services.solfege">Сольфеджіо</h3>
+              <p data-i="services.solfegeText">Ритм, слух і нотна грамота. Фундамент, на якому тримається все інше.</p>
+            </article>
+          </div>
+          <p class="format" data-i="services.format">Онлайн та офлайн · Студія на Таїрова, Одеса</p>
+        </div>
+      </section>
+
+      <section class="interlude">
+        <img src="images/yuliana-piano.jpg" alt="" />
+        <div class="veil"></div>
+        <div class="wrap inner">
+          <blockquote id="quote" class="quote">Музика починається з тиші — і з першого акорду.</blockquote>
+        </div>
+      </section>
+
+      <section class="section mist" id="prices">
+        <div class="wrap">
+          <p class="kicker" data-i="prices.eyebrow">Ціни</p>
+          <h2 class="reveal" data-i="prices.title">Прозоро і без сюрпризів</h2>
+          <div class="prices">
+            <article class="price">
+              <div>
+                <h3 data-i="prices.regular">Урок 60 хвилин</h3>
+                <p class="hint" data-i="prices.regularNote">Вокал, фортепіано або сольфеджіо</p>
+              </div>
+              <div class="price-pay">
+                <p class="sum"><strong>750</strong> грн</p>
+                <a class="btn" href="#book" data-i="prices.cta">Записатися</a>
+              </div>
+            </article>
+            <article class="price price-special">
+              <div>
+                <h3 data-i="prices.first">Перший урок</h3>
+                <span class="badge" data-i="prices.badge">Спеціальна ціна</span>
+                <p class="hint" data-i="prices.firstNote">Щоб познайомитися і відчути формат</p>
+              </div>
+              <div class="price-pay">
+                <p class="sum"><strong>450</strong> грн</p>
+                <a class="btn btn-light" href="#book" data-i="prices.cta">Записатися</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="book">
+        <div class="wrap">
+          <p class="kicker" data-i="book.eyebrow">Як записатися</p>
+          <h2 class="reveal" data-i="book.title">Напишіть — і підберемо час</h2>
+          <p class="copy" data-i="book.text">Записатися можна через Instagram або Telegram</p>
+          <div class="socials">
+            <a class="social" href="https://www.instagram.com/odesskaya.banda" target="_blank" rel="noreferrer">
+              <div>
+                <b>Instagram</b>
+                <span>@odesskaya.banda</span>
+              </div>
+              ↗
+            </a>
+            <a class="social" href="https://t.me/YulianaOdesskaya" target="_blank" rel="noreferrer">
+              <div>
+                <b>Telegram</b>
+                <span>@YulianaOdesskaya</span>
+              </div>
+              ↗
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-row">
+        <div>
+          <strong class="brand" data-i="brand">Odesskaya Banda</strong>
+          <p data-i="footer.place">Одеса, Таїрова</p>
+          <p data-i="footer.line">Уроки вокалу, фортепіано та сольфеджіо</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/odesskaya.banda" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://t.me/YulianaOdesskaya" target="_blank" rel="noreferrer">Telegram</a>
+        </div>
+      </div>
+    </footer>
+
+    <button type="button" class="music-btn" id="music-btn" aria-pressed="true" data-i-aria="music.off" title="Вимкнути музику">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M4 10v4h3l4 3V7L7 10H4Z" stroke-linejoin="round" />
+        <path d="M15 9.5c.9.9.9 4.1 0 5M17.5 7.5c1.8 1.8 1.8 7.2 0 9" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
