@@ -128,24 +128,28 @@ function paintQuote(play) {
   const el = $("#quote");
   if (!el) return;
   const text = copy[lang.value].interlude;
+  el.classList.remove("is-on");
   let delay = 0;
   el.innerHTML = text.split(/(\s+)/).map((part) => {
     if (/^\s+$/.test(part)) return part;
     const html = `<span class="qw" style="--d:${delay}s">${part}</span>`;
-    delay += 0.09;
+    delay += 0.16;
     return html;
   }).join("");
-  el.classList.toggle("is-on", Boolean(play));
+  if (!play) return;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => el.classList.add("is-on"));
+  });
 }
 
 const io = new IntersectionObserver((entries) => {
   for (const entry of entries) {
     if (!entry.isIntersecting) continue;
-    entry.target.classList.add("is-on");
     if (entry.target.id === "quote") paintQuote(true);
+    else entry.target.classList.add("is-on");
     io.unobserve(entry.target);
   }
-}, { threshold: 0.16, rootMargin: "0px 0px -10% 0px" });
+}, { threshold: 0.2, rootMargin: "0px 0px -12% 0px" });
 
 $$(".reveal").forEach((el) => io.observe(el));
 paintQuote(false);
