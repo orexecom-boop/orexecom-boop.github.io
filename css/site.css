@@ -80,7 +80,7 @@ h1 { font-family: var(--display); font-weight: 800; letter-spacing: -0.045em; li
 .hint { font-family: var(--display); font-size: 0.9rem; font-weight: 500; color: var(--faint); }
 .photo { position: relative; z-index: 2; isolation: isolate; overflow: hidden; max-width: 28rem; margin-inline: auto; background: var(--mist); border-radius: 1.5rem; }
 .photo::before { content: ""; position: absolute; inset: -0.75rem; border-radius: 1.5rem; background: var(--mist); }
-.photo img { position: relative; width: 100%; aspect-ratio: 4/5; max-height: 36rem; object-fit: cover; object-position: center 22%; border-radius: 1.1rem; box-shadow: var(--shadow); outline: 1px solid rgb(17 17 20 / 0.08); outline-offset: -1px; }
+.photo img { position: relative; width: 100%; aspect-ratio: 4/5; max-height: 36rem; object-fit: cover; object-position: center 18%; border-radius: 1.1rem; box-shadow: var(--shadow); outline: 1px solid rgb(17 17 20 / 0.08); outline-offset: -1px; }
 .waves { display: flex; align-items: flex-end; gap: 4px; height: 2rem; }
 .waves span { width: 3px; background: var(--ink); border-radius: 99px; animation: wave 1.4s ease-in-out infinite; transform-origin: bottom; }
 .waves span:nth-child(2) { animation-delay: 0.12s; }
