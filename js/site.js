@@ -215,7 +215,7 @@ applyParallax();
 const track = $("#ambient");
 track.volume = 0;
 const musicBtn = $("#music-btn");
-const MUSIC_LEVEL = 0.16;
+const MUSIC_LEVEL = 0.1;
 function fadeMusic(to, ms = 2200) {
   const from = track.volume;
   const start = performance.now();
